@@ -18,13 +18,17 @@ end
 
 describe "makes reservation" do
   it "accurately calculates cost" do
-    expect(Service.new.reserve_room(6)).must_equal 1200 
+    expect(Service.new.room_cost(6)).must_equal 1200 
   end
+  
+  # @reservation = Service.new
+  # it "creates instance of reservation" do
+  #   expect(@cost).must_equal 1200
+  # end
 end
+
 # describe "Service class" do  
-#   it "creates a new passenger instance" do
-#     #     # Arrange (conditions and inputs)
-#     #     # Act (act on the object or method under test)
+#   it "creates a new instance of reservation"
 #     # @reservation = Service.new(2018/10/10, 2018/10/20, 10, 2000) 
 
 #     Service.new(2010/10/10, 2010/10/14, )
