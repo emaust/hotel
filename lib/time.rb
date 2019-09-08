@@ -1,4 +1,6 @@
 require 'date'
+require_relative '../lib/reservation'
+require_relative '../lib/service'
 
 class Time
   attr_reader :check_in, :check_out, :duration
@@ -10,10 +12,9 @@ class Time
   end
   
   def reserve_time(date1, date2)
-    check_in = Date._parse(date1)
-    check_out = Date._parse(date2)
+    check_in = Date.parse(date1)
+    check_out = Date.parse(date2)
     duration = check_out - check_in
-    @duration = duration.to_i
   end
   
 end
