@@ -5,27 +5,30 @@ require_relative '../lib/time'
 describe "Room functions" do
   it "lists the rooms within the hotel" do
     
-    reservation = Service.new
+    reservation = Service.new(2010/12/20, 2010/12/26)
     expect(reservation.rooms).must_be_kind_of Array
   end
   
   it "accurately returns a room number from array" do
-    reservation = Service.new
+    reservation = Service.new(2010/12/20, 2010/12/26)
     expect(reservation.rooms[4]).must_equal 5 
   end
   
-end
-
-describe "makes reservation" do
-  it "accurately calculates cost" do
-    expect(Service.new.room_cost(6)).must_equal 1200 
+  it "creates an instance of duration" do
+    @duration = Dates.new.reserve_time("2010/12/20", "2010/12/26")
+    expect(@duration).must_equal 6
   end
-  
-  # @reservation = Service.new
-  # it "creates instance of reservation" do
-  #   expect(@cost).must_equal 1200
-  # end
-end
+end 
+# describe "makes reservation" do
+#   it "accurately calculates cost" do
+#     expect(Service.new.room_cost(6)).must_equal 1200 
+#   end
+
+#   # @reservation = Service.new
+#   # it "creates instance of reservation" do
+#   #   expect(@cost).must_equal 1200
+#   # end
+# end
 
 # describe "Service class" do  
 #   it "creates a new instance of reservation"

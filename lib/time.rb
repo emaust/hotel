@@ -2,7 +2,7 @@ require 'date'
 require_relative '../lib/reservation'
 require_relative '../lib/service'
 
-class Time
+class Dates
   attr_reader :check_in, :check_out, :duration
   
   def initialize
@@ -15,6 +15,7 @@ class Time
     check_in = Date.parse(date1)
     check_out = Date.parse(date2)
     duration = check_out - check_in
+    @duration = duration.to_i
   end
   
 end

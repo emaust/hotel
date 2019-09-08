@@ -9,11 +9,10 @@ class Reservation
   
   
   def initialize(check_in, check_out)
-    @duration = duration
-    @cost = cost
     @room = room
     @check_in = check_in
     @check_out = check_out
+    @price = 200
     @room = rand(1..20)
   end
   
