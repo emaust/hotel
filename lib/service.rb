@@ -4,22 +4,29 @@ require_relative '../lib/time'
 
 class Service
   
-  attr_reader :rooms, :price, :check_in, :check_out
-  attr_accessor :reservation, :cost, :room
+  attr_accessor :reservation, :cost, :reservations, :rooms, :price, :duration
   
   def initialize
-    @rooms = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    @rooms = (1..20).to_a
     @cost = cost
     @price = 200
-    @check_in = check_in
-    @check_out = check_out
-    @room = room
+    @reservations = []
   end
   
   
   def room_cost(duration)
     @cost = (duration - 1) * price 
   end
+  
+  def add_reservation(reservation)
+    @reservations << reservation
+  end
+  
+  
+  # make new instance of reservation
+  # store that instance of reservation in an array
+  # access the information in the array by calling the instance variable at that index
+  
   
   
 end

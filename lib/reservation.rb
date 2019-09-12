@@ -4,8 +4,7 @@ require_relative '../lib/service'
 
 
 class Reservation
-  attr_reader :room, :price, :duration, :cost, :check_in, :check_out
-  attr_writer :reservations
+  attr_accessor :room, :price, :duration, :cost, :check_in, :check_out, :reservations
   
   
   def initialize(check_in, check_out)
@@ -15,8 +14,6 @@ class Reservation
     @cost = Service.new.room_cost(@duration)
     @room = rand(1..20)
   end
-  
-  
   
   
 end

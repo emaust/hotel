@@ -6,7 +6,7 @@ require_relative '../lib/reservation'
 
 
 describe "Reservation class" do
-  it "returns an instance of Reservation" do
+  it "initializes Reservation" do
     @reservation = Reservation.new("2018/12/20", "2018/12/26")
     expect(@reservation).must_be_kind_of Reservation
   end
@@ -35,4 +35,13 @@ describe "Reservation class" do
     reservation = Reservation.new("2000/10/10","2000/10/15")
     expect(reservation.room).must_be_kind_of Integer
   end
+  
+  
+  
+  
 end
+# describe "populates reservation array" do
+#   it "adds a reservation to reservations" do
+#     Service.new.make_reservation("2010/12/20", "2010/12/26")
+#     expect(@reservations.length).must_equal 1
+#   end

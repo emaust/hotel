@@ -14,11 +14,6 @@ describe "Dates" do
   end
   
   it "accurately calculates duration" do
-    
-    # check_in = Date.parse("1940/12/21")
-    # check_out = Date.parse("1940/12/29")
-    # duration = (check_out - check_in)
-    # duration = duration.to_i
     duration = Dates.new.reserve_time("2010/11/10", "2010/11/18")
     expect(duration).must_equal 8
   end
