@@ -1,4 +1,6 @@
 
+
+=======
 module Hotel
   class Reservation
     # Feel free to change this method signature as needed. Make sure to update the tests!
@@ -9,4 +11,5 @@ module Hotel
       return 3
     end
   end
+  >>>>>>> origin/design-scaffolding
 end
