@@ -15,15 +15,22 @@ module Hotel
       @reservation_list = []
     end
     
-    # need to actually specify a room here
+    # may be complete nonsense, need to test with more than one occurence, but will return first index for empty list
     def reserve_room(start_date, end_date)      
+      current_room = ()
+      if reservation_list.include?(start_date) == false
+        current_room = rooms.shift
+      elsif reservation_list.include?(start_date)
+        count = reservation_list.count(start_date)
+        current_room = rooms[count - 1]
+      end
       
-      room = rooms.shift
+      room = current_room
       range = Hotel::DateRange.new(start_date, end_date)
       start_date = range.start_date
       end_date = range.end_date
       nights = range.nights
-      
+      binding.pry
       reservation = Reservation.new(start_date, end_date, nights, room)
       
       @reservation_list << reservation
