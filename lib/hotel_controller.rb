@@ -1,30 +1,33 @@
 require_relative 'date_range'
 require_relative 'reservation'
+require 'pry'
 
 module Hotel
   class HotelController 
     
-    attr_reader :rooms
     # does this need to be accessor? idk, look it up
-    attr_accessor :reservation_list
+    attr_reader :nights
+    attr_accessor :reservation_list, :rooms
     
     # Wave 1
     def initialize
-      @rooms = [(1..20)]
+      @rooms = (1..20).to_a
       @reservation_list = []
     end
     
+    # need to actually specify a room here
     def reserve_room(start_date, end_date)      
       
+      room = rooms.shift
       range = Hotel::DateRange.new(start_date, end_date)
       start_date = range.start_date
       end_date = range.end_date
       nights = range.nights
       
-      reservation = Reservation.new(start_date, end_date, nights, nil)
-      return reservation
-      @reservation_list << reservation
+      reservation = Reservation.new(start_date, end_date, nights, room)
       
+      @reservation_list << reservation
+      return reservation
     end
     
     # possible trickery, reassess when more reservations are generated?
