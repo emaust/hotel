@@ -6,17 +6,19 @@ module Hotel
   class HotelController 
     
     # does this need to be accessor? idk, look it up
-    attr_reader :nights
-    attr_accessor :reservation_list, :rooms
+    
+    attr_accessor :reservation_list, :rooms, :reservation
     
     # Wave 1
     def initialize
       @rooms = (1..20).to_a
       @reservation_list = []
+      @reservations = reservation
     end
     
     # may be complete nonsense, need to test with more than one occurence, but will return first index for empty list
     def reserve_room(start_date, end_date)      
+      
       current_room = ()
       if reservation_list.include?(start_date) == false
         current_room = rooms.shift
@@ -30,7 +32,7 @@ module Hotel
       start_date = range.start_date
       end_date = range.end_date
       nights = range.nights
-      binding.pry
+      
       reservation = Reservation.new(start_date, end_date, nights, room)
       
       @reservation_list << reservation
@@ -48,8 +50,26 @@ module Hotel
     
     # Wave 2
     def available_rooms(start_date, end_date)
-      # start_date and end_date should be instances of class Date
-      return []
-    end
+      range = Hotel::DateRange.new(start_date, end_date)
+      start_date = range.start_date
+      end_date = range.end_date
+      nights = range.nights.to_i
+      
+      nights.times do
+        @reservation_list.each do
+          @reservation.include?(start_date)
+          rooms.delete(@reservation.room)
+        end
+      end
+      return rooms
+    end 
   end
 end
+# if the reservation list includes that date
+# check for room numbers for that date
+# delete that room number from a generic list of rooms
+# iterate to next date (nights)
+
+
+# start_date and end_date should be instances of class Date
+
