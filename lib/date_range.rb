@@ -10,12 +10,12 @@ module Hotel
       @start_date = start_date
       @end_date = end_date
       @nights = end_date - start_date
-      # if @start_date == nil || @end_date == nil
-      #   raise ArgumentError.new "Invalid date - no date entered"
-      # elsif @end_date >= @start_date
-      #   raise ArgumentError.new "Invalid date - end date cannot be same day or prior to start date"
-      # end
       
+      if start_date == nil || end_date == nil
+        raise ArgumentError.new
+      elsif end_date <= start_date
+        raise ArgumentError.new 
+      end
     end
     
     def overlap?(other)

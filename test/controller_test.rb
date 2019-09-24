@@ -35,7 +35,7 @@ describe Hotel::HotelController do
     end
   end
   
-  describe "wave 2" do
+  xdescribe "wave 2" do
     describe "available_rooms" do
       it "takes two dates and returns a list" do
         start_date = @date

@@ -11,12 +11,15 @@ module Hotel
       @rooms = [(1..20)]
     end
     
-    def reserve_room(start_date, end_date)
+    def reserve_room(start_date, end_date)      
+      
       range = Hotel::DateRange.new(start_date, end_date)
       start_date = range.start_date
       end_date = range.end_date
       nights = range.nights
+      
       return Reservation.new(start_date, end_date, nights, nil)
+      
     end
     
     def reservations(date)
