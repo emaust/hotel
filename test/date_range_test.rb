@@ -16,14 +16,14 @@ describe Hotel::DateRange do
       start_date = Date.new(2010, 12, 20)
       end_date = Date.new(2010, 12, 19)
       
-      expect(Hotel::DateRange.new(start_date, end_date)).must_raise ArgumentError
+      expect{Hotel::DateRange.new(start_date, end_date)}.must_raise ArgumentError
     end
     
     it "is an error to create a 0-length range" do
       start_date = Date.new(2010, 12, 20)
       end_date = Date.new(2010, 12, 20)
       
-      expect(Hotel::DateRange.new(start_date, end_date)).must_raise ArgumentError
+      expect{Hotel::DateRange.new(start_date, end_date)}.must_raise ArgumentError
     end
   end
   
