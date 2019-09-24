@@ -1,16 +1,20 @@
-
+require_relative 'date_range'
+require_relative 'reservation'
 
 module Hotel
   class HotelController 
     
     attr_reader :rooms
     # Wave 1
-    def rooms
-      @rooms = 1..20
+    def initialize
+      @rooms = [(1..20)]
     end
     
     def reserve_room(start_date, end_date)
-      # start_date and end_date should be instances of class Date
+      range = Hotel::DateRange.new(start_date, end_date)
+      start_date = range.start_date
+      end_date = range.end_date
+      room = room
       return Reservation.new(start_date, end_date, nil)
     end
     

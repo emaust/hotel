@@ -6,12 +6,14 @@ module Hotel
     attr_accessor :start_date, :end_date
     
     def initialize(start_date, end_date)
-      @start_date = Date.new(start_date)
-      @end_date = Date.new(end_date)
+      @start_date = start_date
+      @end_date = end_date
       
-      if valid_date?(start_date) == false || valid_date?(end_date) == false
-        raise "Invalid date range"
-      end
+      # if @start_date == nil || @end_date == nil
+      #   raise ArgumentError.new "Invalid date - no date entered"
+      # elsif @end_date >= @start_date
+      #   raise ArgumentError.new "Invalid date - end date cannot be same day or prior to start date"
+      # end
       
     end
     
