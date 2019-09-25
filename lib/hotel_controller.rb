@@ -56,11 +56,13 @@ module Hotel
       end_date = range.end_date
       nights = range.nights.to_i
       check = 1
+      
       until check == nights do
         @reservation_list.each do
           @reservation.include?(start_date)
           rooms.delete(@reservation.room)
         end
+        start_date + 1
         check += 1
       end
       return rooms
