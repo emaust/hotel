@@ -13,17 +13,18 @@ module Hotel
     def initialize
       @rooms = (1..20).to_a
       @reservation_list = []
-      @reservations = reservation
+      @reservation = reservation
     end
     
     # may be complete nonsense, need to test with more than one occurence, but will return first index for empty list
     def reserve_room(start_date, end_date)      
       
       current_room = ()
-      if reservation_list.include?(start_date) == false
+      if @reservation_list.empty? == true
         current_room = rooms.shift
-      elsif reservation_list.include?(start_date)
-        count = reservation_list.count(start_date)
+      elsif @reservation_list.empty? == false
+        @reservation_list.include?(start_date)
+        count = @reservation_list.count(start_date)
         current_room = rooms[count - 1]
       end
       
@@ -54,12 +55,13 @@ module Hotel
       start_date = range.start_date
       end_date = range.end_date
       nights = range.nights.to_i
-      
-      nights.times do
+      check = 1
+      until check == nights do
         @reservation_list.each do
           @reservation.include?(start_date)
           rooms.delete(@reservation.room)
         end
+        check += 1
       end
       return rooms
     end 
