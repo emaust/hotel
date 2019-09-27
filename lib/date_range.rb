@@ -9,7 +9,7 @@ module Hotel
     def initialize(start_date, end_date)
       @start_date = start_date
       @end_date = end_date
-      # @nights = nights
+      
       
       if start_date == nil || end_date == nil
         raise ArgumentError.new
@@ -20,12 +20,22 @@ module Hotel
     
     def nights
       nights = (end_date - start_date) - 1
+      nights = nights.to_i
     end
     
-    def overlap?(other)
-      return false
-    end
     
+    
+    def overlap?(reservation)
+      if reservation.end_date > @start_date && reservation.end_date < @end_date
+        return true
+      elsif reservation.start_date < @start_date && reservation.end_date > @end_date
+        return true
+      elsif reservation.start_date == @start_date
+        return true
+      else
+        return false
+      end 
+    end
     
     def include?(date)
       return false

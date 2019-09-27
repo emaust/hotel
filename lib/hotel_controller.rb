@@ -54,20 +54,26 @@ module Hotel
       range = Hotel::DateRange.new(start_date, end_date)
       start_date = range.start_date
       end_date = range.end_date
-      nights = range.nights.to_i
+      nights = range.nights
       check = 1
       
       until check == nights do
-        @reservation_list.each do
-          @reservation.include?(start_date)
-          rooms.delete(@reservation.room)
+        if @reservation_list.empty? == false
+          @reservation_list.each do
+            @reservation.include?(start_date)
+            rooms.delete(@reservation.room)
+          end
+        elsif @reservation_list.empty?
+          break
         end
         start_date + 1
         check += 1
       end
       return rooms
-    end 
-  end
+    end
+    
+  end 
+  
 end
 # if the reservation list includes that date
 # check for room numbers for that date
