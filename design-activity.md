@@ -13,3 +13,7 @@ In implementation A, CartEntry unit_price and quantity are shared with Order to 
 
 6. The implementation that better adheres to the single responsibility principle (and is more loosely coupled) is Implementation B.
 
+
+Revisiting Hotel:
+
+In Hotel Controller, the available rooms method is creating a new instance of the class DateRange instead of taking instances of DateRange. I may be able to simply remove that portion of the code, since it looks like it may be redundant in relation to the rest of the code in that method. If not, the method should be written to be taking instance variables in the until loop rather than local variables. After looking at the code, I think that it's a flaw in the original intention of the design, rather than an area that needs to be refactored.
