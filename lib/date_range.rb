@@ -25,21 +25,22 @@ module Hotel
     
     
     
-    def overlap?(reservation)
-      if reservation.end_date > @start_date && reservation.end_date < @end_date
+    def overlap?(range)
+      if range.end_date > @start_date && range.end_date < @end_date
         return true
-      elsif reservation.start_date < @start_date && reservation.end_date > @end_date
+      elsif range.start_date < @start_date && range.end_date > @end_date
         return true
-      elsif reservation.start_date == @start_date
+      elsif range.start_date == @start_date
         return true
       else
         return false
       end 
+      
     end
     
-    def include?(date)
-      return false
-    end
+    # def include?(date)
+    #   return false
+    # end
     
   end
 end

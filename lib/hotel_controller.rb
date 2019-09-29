@@ -28,13 +28,21 @@ module Hotel
         current_room = rooms[count - 1]
       end
       
+      
       room = current_room
       range = Hotel::DateRange.new(start_date, end_date)
       start_date = range.start_date
       end_date = range.end_date
       nights = range.nights
       
+      # if the range has overlapping dates, then it will return true
+      # if the range returns true 
+      
       reservation = Reservation.new(start_date, end_date, nights, room)
+      
+      # if @reservations_list.overlap?(range)
+      #   raise ArgumentError.new
+      # end
       
       @reservation_list << reservation
       return reservation
@@ -51,22 +59,23 @@ module Hotel
     
     # Wave 2
     def available_rooms(start_date, end_date)
-      range = Hotel::DateRange.new(start_date, end_date)
-      start_date = range.start_date
-      end_date = range.end_date
-      nights = range.nights
+      # range = Hotel::DateRange.new(start_date, end_date)
+      # start_date = range.start_date
+      # end_date = range.end_date
+      # nights = range.nights
+      length = end_date - start_date
       check = 1
       
-      until check == nights do
+      until check == length do
         if @reservation_list.empty? == false
           @reservation_list.each do
-            @reservation.include?(start_date)
+            @reservation.include?(@start_date)
             rooms.delete(@reservation.room)
           end
         elsif @reservation_list.empty?
           break
         end
-        start_date + 1
+        @start_date + 1
         check += 1
       end
       return rooms
